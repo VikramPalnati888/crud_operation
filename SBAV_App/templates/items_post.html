@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SBAV PROJECT</title>
+</head>
+<body >
+	<!-- <a href="{% url 'items_get' %}"><button>SHOW ITEMS</button><br><br> -->
+  <form  action='{%url "items_post"%}' method='POST' enctype="multipart/form-data" autocomplete="off">
+  	{% csrf_token %}
+	<label style="background-color: #FFFFFF">ITEM NAME:-</label><input type="Item_Name" name="Item_Name" required><br><br>
+	<label style="background-color: #FFFFFF">ITEMS IN STOCK:-</label><input type="number" name="Items_In_Stock" required><br><br>
+	<label style="background-color: #FFFFFF">ITEM COST:-</label><input type="number" name="Item_Cost" required><br><br>
+	<input type="SUBMIT" >
+	</form>
+  </div>
+</body>
+</html> 

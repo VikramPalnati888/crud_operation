@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SBAV PROJECT</title>
+</head>
+<body >
+  <form   action='/itemsedit/{{data.id}}/' method='POST'>
+    {% csrf_token %}
+
+    <label style="background-color: #FFFFFF">ITEM NAME:-</label>
+    <input type="Item_Name" name="Item_Name" value='{{ data.Item_Name }}' required><br><br>
+
+    <label style="background-color: #FFFFFF">ITEMS IN STOCK:-</label>
+    <input type="number" name="Items_In_Stock" value='{{ data.Items_In_Stock }}' required><br><br>
+
+     <label style="background-color: #FFFFFF">ITEMS Out STOCK:-</label>
+     <input type="number" name="Items_Out_Stock" value='{{ data.Items_Out_Stock }}' required><br><br>
+
+    <label style="background-color: #FFFFFF">ITEM COST:-</label>
+    <input type="number" name="Item_Cost" value='{{ data.Item_Cost }}' required><br><br>
+
+    <input type="SUBMIT" >
+    </form>
+  </div>
+</body>
+</html> 
+</html>
