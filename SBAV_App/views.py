@@ -2,11 +2,36 @@ from django.shortcuts import render,get_object_or_404,HttpResponseRedirect
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_protect
 from django.forms.models import model_to_dict
+from django.contrib import messages
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login as auth_login
 import pytz
 from SBAV_App.models import *
 from SBAV_App.forms import *
 
-@csrf_protect
+
+def login(request):
+	if request.method == "POST":
+		username, password = request.POST['username'], request.POST['password']
+		user = authenticate(request,username=username, password=password)
+		if user:
+			auth_login(request,user)
+			user_name = request.user
+			return redirect('items_get')
+		else:
+			messages.error(request, 'Invalid Login Credentials')
+			return redirect('login')
+	else:
+		user_name = request.user
+		return render(request, 'login.html', {'user': user_name})
+
+
+def Logout(request):
+	logout(request)
+	return redirect('login')
+
+@login_required
 def ItemsPost(request):
 	if request.method == "POST":
 		Items.objects.create(Item_Name= request.POST['Item_Name'],
@@ -15,6 +40,7 @@ def ItemsPost(request):
 		return redirect('items_get')
 	return render(request, 'items_post.html', {'message':"data stored successful"})
 
+@login_required
 def itemsGet(request):
 	if request.method == "GET":
 		data = {}
@@ -32,6 +58,7 @@ def itemsGet(request):
 		data_list.append(data)
 		return render(request, 'items_get.html', {'response':data_list})
 
+@login_required
 def itemsEdit(request, pk):
 	items_data = Items.objects.get(id=pk)
 	if request.method == 'POST':
@@ -44,6 +71,7 @@ def itemsEdit(request, pk):
 		return redirect('items_get')
 	return render(request, "items_edit.html", {'data':items_data})
 
+@login_required
 def itemsDelete(request,pk):
 	item_obj = Items.objects.get(id=pk)
 	item_obj.delete()

@@ -119,7 +119,10 @@ REST_FRAMEWORK = {
         'SBAV_Project.exempt.CsrfExemptSessionAuthentication',
     )
 }
-
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'SBAV_App.authentication.EmailAuthBackend',
+)
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 

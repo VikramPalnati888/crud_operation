@@ -6,5 +6,7 @@ urlpatterns = [
     path('itemsget/', itemsGet,name='items_get'),
     path('itemsedit/<int:pk>/', itemsEdit,name='items_edit'),
     path('itemsdelete/<int:pk>/', itemsDelete,name='items_delete'),
+    path('login/', login,name='login'),
+    path('logout/', Logout,name='logout'),
 ]
 

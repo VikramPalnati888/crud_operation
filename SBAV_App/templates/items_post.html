@@ -3,12 +3,14 @@
 <title>SBAV</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
 
 <div >
   <div class="w3-container w3-blue">
-    <h2>SBAV</h2>
+    <h2>SBAV <a href="{% url 'logout'%}"><i class="fa fa-sign-out" style="float:right;font-size:35px;color:white;"></i></a></h2>
   </div>
+    
   <form action='{%url "items_post"%}' method='POST' enctype="multipart/form-data" autocomplete="off">
   	{% csrf_token %}
     <p>      
@@ -27,7 +29,7 @@
 	<center>
     <p>
     <button class="w3-btn w3-blue">SUBMIT</button> 
-    <button class="w3-btn w3-blue"> <a href="{% url 'items_get'%}">SHOW ITEMS</button>
+    <button class="w3-btn w3-blue"> <a href="{% url 'items_get'%}">SHOW ITEMS</a></button>
 	</p><br>
 	</center>
   </form>

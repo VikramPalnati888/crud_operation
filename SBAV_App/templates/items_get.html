@@ -3,8 +3,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>SBAV</title>
     <style>
       table {
@@ -38,7 +38,7 @@
 <body>
 <div >
   <div class="w3-container w3-blue">
-    <h2>SBAV</h2>
+    <h2>SBAV <a href="{% url 'logout'%}"><i class="fa fa-sign-out" style="float:right;font-size:35px;color:white;"></i></a></h2>
   </div>
 <center>
     <form action='{%url "items_get"%}' method="GET" autocomplete="off">
@@ -68,7 +68,7 @@
         </table>
     </form>
     <p>
-    <button class="w3-btn w3-blue"> <a href="{% url 'items_post'%}">ADD NEW ITEM</button>
+    <button class="w3-btn w3-blue"> <a href="{% url 'items_post'%}">ADD NEW ITEM</a></button>
     </p><br>
 </center>
 </body>
